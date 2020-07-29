@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 
-image_path = '/Users/adityashukla/Desktop/Programming/Python/business-1730089.jpeg'
+image_path = '/business-1730089.jpeg'
 
 st.image(image_path, use_column_width=True)
 
@@ -11,7 +11,7 @@ st.title("Conjexure ~ Stock Price Forecasting 📈")
 st.markdown("In this Machine Learning application, we have used the historical stock price data for Alphabet (GOOGL) and Apple Inc. (APPL) to forecast its price in a specified future window.")
 st.markdown("We have used Tensorflow and Keras to build an LSTM model in addition to a convolutional as well as a lambda layer. We trained our model on a four-month period from April 1st, 2020 through July 1st, 2020.")
 
-path = ('/Users/adityashukla/Desktop/Programming/stock-market-or-sales-forecasting-using-lstm-with-rnn-master/DATA.csv')
+path = ('/DATA.csv')
 
 @st.cache(persist=True)
 def predict(forecast_window):

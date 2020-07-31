@@ -24,7 +24,7 @@ To run Conjexure on your local machine, first ensure that the following relevant
 3. [NumPy](numpy.org)
 4. [Matplotlib.pyplot](https://matplotlib.org/api/pyplot_api.html)
 
-To install streamlit, use the given pip command.
+To install Streamlit, use the given pip command.
 ```bash
 pip install streamlit
 ```

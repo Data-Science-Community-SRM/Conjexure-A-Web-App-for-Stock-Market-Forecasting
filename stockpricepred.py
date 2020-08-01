@@ -25,7 +25,7 @@ path_aapl = ('data_aapl.csv')
 
 
 # function to load separate models on the basis of user choice
-@st.cache(allow_output_mutation=True)
+
 def load_model(forecast_window):
     if forecast_window == '1 week':
         model = keras.models.load_model('Experiments NB/Model1_pred_7days.h5')
@@ -37,6 +37,23 @@ def load_model(forecast_window):
         model = keras.models.load_model('Experiments NB/Model_4_Pred28_Days.h5')
     elif forecast_window == '5 weeks':
         model = keras.models.load_model('Experiments NB/Model5_Pred_35Days.h5')
+
+    # model._make_predict_function()
+    model.summary()
+    return model
+
+
+def load_model_app(forecast_window):
+    if forecast_window == '1 week':
+        model = keras.models.load_model('Experiments NB/Apple-Model-TransferLearning/apple-7.h5')
+    elif forecast_window == '2 weeks':
+        model = keras.models.load_model('Experiments NB/Apple-Model-TransferLearning/apple-14.h5')
+    elif forecast_window == '3 weeks':
+        model = keras.models.load_model('Experiments NB/Apple-Model-TransferLearning/apple-21.h5')
+    elif forecast_window == '4 weeks':
+        model = keras.models.load_model('Experiments NB/Apple-Model-TransferLearning/apple-28.h5')
+    elif forecast_window == '5 weeks':
+        model = keras.models.load_model('Experiments NB/Apple-Model-TransferLearning/apple-35.h5')
 
     # model._make_predict_function()
     model.summary()
@@ -65,6 +82,7 @@ def mapper(forecast_window):
 
 
 # windowing functions
+
 def windowed_dataset(series, window_size=31, predday=7, batch_size=32, shuffle_buffer=1000):
     ds = tf.data.Dataset.from_tensor_slices(series)
     ds = ds.window(window_size + predday, shift=1, drop_remainder=True)
@@ -111,29 +129,45 @@ def windowed_dataset4(series, window_size=150, predday=35, batch_size=32, shuffl
 
 
 # plotting function to plot the final forecast line graph
-def plot_graph(forecast, forecast_window_int, a, b):
-    if forecast_window_int == 7:
-        plt.plot(np.arange(0, 31), a[0])
-        plt.plot(np.arange(31, 38), forecast[0], "--")
-        plt.plot(np.arange(31, 38), b[0])
-    elif forecast_window_int == 14:
-        plt.plot(np.arange(1, 63), a[0])
-        plt.plot(np.arange(63, 77), forecast[0], "--")
-        plt.plot(np.arange(63, 77), b[0])
-    elif forecast_window_int == 21:
-        plt.plot(np.arange(1, 91), a[0])
-        plt.plot(np.arange(91, 112), forecast[0], "--")
-        plt.plot(np.arange(91, 112), b[0])
-    elif forecast_window_int == 28:
-        plt.plot(np.arange(1, 121), a[0])
-        plt.plot(np.arange(121, 149), forecast[0], "--")
-        plt.plot(np.arange(121, 149), b[0])
-    elif forecast_window_int == 35:
-        plt.plot(np.arange(1, 151), a[0])
-        plt.plot(np.arange(151, 186), forecast[0], "--")
-        plt.plot(np.arange(151, 186), b[0])
 
-    plt.legend(["Input of 30 days", "Prediction", "Truth Value"])
+def plot_graph(forecast, forecast_window_int, a):
+
+    if forecast_window_int == 7:
+        plt.plot(np.arange(0, 31), scaler1.inverse_transform(a[0]))
+        plt.plot(np.arange(31, 38), scaler1.inverse_transform(forecast)[0], "-")
+
+    elif forecast_window_int == 14:
+        plt.plot(np.arange(1, 63),scaler1.inverse_transform(a[0]))
+        plt.plot(np.arange(63, 77), scaler1.inverse_transform(forecast)[0], "-")
+
+    elif forecast_window_int == 21:
+        plt.plot(np.arange(1, 91), scaler1.inverse_transform(a[0]))
+        plt.plot(np.arange(91, 112), scaler1.inverse_transform(forecast)[0], "-")
+
+    elif forecast_window_int == 28:
+        plt.plot(np.arange(1, 121), scaler1.inverse_transform(a[0]))
+        plt.plot(np.arange(121, 149), scaler1.inverse_transform(forecast)[0], "-")
+
+    elif forecast_window_int == 35:
+        plt.plot(np.arange(1, 151), scaler1.inverse_transform(a[0]))
+        plt.plot(np.arange(151, 186), scaler1.inverse_transform(forecast)[0], "-")
+
+    plt.legend(["Actual Days", "Prediction"])
+    plt.title('Prediction for next {} Days'.format(forecast_window_int))
+    st.pyplot()
+
+
+def future_predicted(testbatches, window_size, predday):
+    x, y = next(iter(testbatches))
+    output = model.predict(x)
+
+    time = list(range(1, window_size + 1))
+    time2 = list(range(window_size + 1, window_size + predday + 1))
+    plt.plot(time, x[0])
+    plt.plot(time2, output[0])
+    plt.legend(['Actual Values', 'Predicted Values'])
+    plt.title('Prediction for {} Days'.format(predday))
+
     st.pyplot()
 
 
@@ -143,10 +177,10 @@ if __name__ == "__main__":
         "You may go over the raw data for Alphabet or Apple. Just go to the sidebar and select your stock of choice. We have used the closing price as the generic price. ")
     choice = st.selectbox("Show Raw Data", ['Alphabet (GOOGL)', 'Apple (APPL)'])
     if choice == 'Alphabet (GOOGL)':
-        data = load_data(path_googl,4000)
+        data = load_data(path_googl, 4000)
         st.write(data)
     elif choice == 'Apple (APPL)':
-        data = load_data(path_aapl,4000)
+        data = load_data(path_aapl, 4000)
         st.write(data)
 
     # Dropdown Menu to Choose Company Stock
@@ -182,6 +216,8 @@ if __name__ == "__main__":
         if forecast_window_int == 7:
 
             xt = windowed_dataset(xt1, predday=7)
+
+
 
         elif forecast_window_int == 14:
 
@@ -243,13 +279,14 @@ if __name__ == "__main__":
         else:
             xt = windowed_dataset4(xt1, predday=35)
 
-
         a, b = next(iter(xt))
 
         # load that model which is asked by the user and predict based on given timestep
-        model = load_model(forecast_window)
+
+        model = load_model_app(forecast_window)
         forecast = model.predict(a)
 
     # Plotting of future forecast graph
     st.subheader("Future forecast for %s for a period of %s after 20th July, 2020:" % (stock_choice, forecast_window))
-    plot_graph(forecast, forecast_window_int, a, b)
+
+    plot_graph(forecast, forecast_window_int, a)

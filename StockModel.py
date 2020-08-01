@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 
+import matplotlib.pyplot as plt
+
 from tensorflow.keras import layers
+from sklearn.preprocessing import MinMaxScaler
 
 tf.random.set_seed(7)
 np.random.seed(7)
@@ -28,7 +31,7 @@ class Model_related_things():
         predday = self.Outputdays
         shuffle_buffer = 1000
 
-        batch_size = 32
+        batch_size = 4
 
         ds = tf.data.Dataset.from_tensor_slices(series)
         ds = ds.window(window_size + predday, shift=1, drop_remainder=True)
@@ -36,43 +39,36 @@ class Model_related_things():
         ds = ds.shuffle(shuffle_buffer)
         ds = ds.map(lambda w: (w[:predday], tf.squeeze(w[-predday:])))
         ds = ds.batch(batch_size).prefetch(3)
+
         return ds
     
-    def trainModel(self, traindata, crossval):
+    def trainModel(self, traindata):
+
+        scaler = MinMaxScaler(feature_range=(0,0.75))
+
+        ser = traindata.reshape(-1,1)
+        series = scaler.fit_transform(ser)
         
-        print(traindata.shape,crossval.shape)
+        ds = self.plsgivedataset(series)
 
-        ds = self.plsgivedataset(traindata)
-        testbatches = self.plsgivedataset(crossval)
-
-        print(ds,testbatches)
-        optimizer = tf.keras.optimizers.Adam(lr=1e-2)
+        optimizer = tf.keras.optimizers.Adam(lr=1e-1)
         l = tf.keras.losses.LogCosh()
-        self.model.compile(optimizer = optimizer, loss = l , metrics=["mse"])
+        self.model.compile(optimizer = "SGD", loss = "mse" , metrics=[l])
         
-        h = self.model.fit(ds,epochs=100,verbose=1)
+        h = self.model.fit(ds,epochs=20,verbose=1)
         hist = h.history
 
         return hist
 
 
-Apple_data = pd.read_csv("data_aapl.csv")
-
+Apple_data = pd.read_csv("data_googl.csv")
 
 window = 30
 predday = 7
 
-# To split the data into 90:10
-Trainsplit = 0.6
-cut = int(Apple_data.shape[0]*Trainsplit)
+print(len(Apple_data))
 
-closetrain = Apple_data[:cut]
-# test
-closetest = Apple_data[cut:-(window+predday)]
-# forecast for future 7 days
-closeforecast = Apple_data[-(window+predday):]
+newmodel = Model_related_things(predday,window)
+plt.plot(newmodel.trainModel(Apple_data.Close.values)["loss"])
+plt.show()
 
-print(closetrain.shape, closetest.shape)
-
-newmodel = Model_related_things()
-newmodel.trainModel(closetrain.Close.values,closetest.Close.values)

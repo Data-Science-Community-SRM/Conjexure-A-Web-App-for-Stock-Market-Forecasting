@@ -106,7 +106,7 @@ Below is the forecast of the stock values for 21st July 2020 to 27th July 2020 b
 
 
 ## Team 
-- Aditya mangla
+- [Aditya mangla](https://www.linkedin.com/in/aadimangla)
 - Harsh Sharma
 - Abhishek Saxena
 - Tarushi Pathak

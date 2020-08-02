@@ -94,7 +94,7 @@ We are using past 30 days stock values to predict next 7 days values. For this p
 
 ## Forecast Graph
 Below is the forecast of the stock values for 21st July 2020 to 27th July 2020 based on the data of past 98 days.<br/>
-![training loss vs validation loss](Images/forecast_graph(2).png)<br/>
+![training loss vs validation loss](Images/actual_values_forecast_graph.png)<br/>
 
 ## Webapp 
 ![Web_app](Images/web_app.png)<br/>

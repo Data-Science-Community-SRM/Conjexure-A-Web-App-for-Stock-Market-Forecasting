@@ -80,7 +80,7 @@ The above model is for forecasting 7 days stock values. In the other models just
 
 ## Model Loss
 The following is the validation and training loss os the above model.<br/>
-![training loss vs validation loss](Images/loss.png),<br/>
+![training loss vs validation loss](Images/loss.png)<br/>
 
 
 From above we can see that our validation loss is noisy this might be due to the fact that we are using stochastic gradient descent which calculate loss based on each sample. But if you look at the y axis values which represent the loss value You will see that out loss value is almost in 10^(-3) which is pretty low loss so even if it's noisy it's quite low so it does not effect our model performance 
@@ -94,10 +94,14 @@ We are using past 30 days stock values to predict next 7 days values. For this p
 
 ## Forecast Graph
 Below is the forecast of the stock values for 21st July 2020 to 27th July 2020 based on the data of past 98 days.<br/>
-![training loss vs validation loss](Images/forecast_graph.png)<br/>
+![training loss vs validation loss](Images/forecast_graph(2).png)<br/>
 
 ## Webapp 
-Images of the Web app to be added.
+![Web_app](Images/web_app.png)<br/>
+
+![Web_app](Images/web_app2.png)<br/>
+
+![Web_app](Images/web_app3.png)<br/>
 
 
 

@@ -1,11 +1,9 @@
 import numpy as np
 import pandas as pd
-#import tensorflow as tf
+import tensorflow as tf
 
 from tensorflow.keras.models import load_model
 from tensorflow import convert_to_tensor
-
-#import matplotlib.pyplot as plt
 
 from tensorflow.keras import layers
 from sklearn.preprocessing import MinMaxScaler
@@ -14,20 +12,16 @@ from sklearn.preprocessing import MinMaxScaler
 #np.random.seed(7)
 
 class Model_related_things():
-    def __init__(self,Outputdays = 7, inputdays = 30):
+    def __init__(self,Outputdays = 7):
 
         self.Outputdays = Outputdays
-        self.inputdays = inputdays
+        self.inputdays = 30*(self.Outputdays // 7)
         self.scaler = MinMaxScaler(feature_range=(0,0.75))
 
-    def loadmodel(self,path):
-        
-        self.model = load_model(path)
-
-
-    def newmodel(self):
+    def NewModel(self):
 
         tf.keras.backend.clear_session()
+        
         self.model = tf.keras.Sequential()
 
         self.model.add(layers.Conv1D(128,5,1,padding = "causal",activation = "relu",input_shape=[None, 1]))
@@ -36,7 +30,18 @@ class Model_related_things():
         self.model.add(layers.LSTM(128))
         for i in [64,64]:
             self.model.add(layers.Dense(i, activation="selu"))
-        self.model.add(layers.Dense(Outputdays))
+        self.model.add(layers.Dense(self.Outputdays))
+
+    def SaveModel(self,path):
+        self.model.save(path)
+
+    def loadmodel(self,path):
+        
+        S,Days = path.split("/")[-1].split("_")
+        self.Outputdays = int(Days)
+        self.inputdays = 30*(Self.Outputdays // 7)
+    
+        self.model = load_model(path)
 
     def plsgivedataset(self, series):
         window_size = self.inputdays
@@ -54,7 +59,7 @@ class Model_related_things():
 
         return ds
     
-    def trainModel(self, traindata):
+    def TrainModel(self, traindata,E = 20):
         ser = traindata.reshape(-1,1)
         series = self.scaler.fit_transform(ser)
         
@@ -64,7 +69,7 @@ class Model_related_things():
         l = tf.keras.losses.LogCosh()
         self.model.compile(optimizer = "SGD", loss = "mse" , metrics=[l])
         
-        h = self.model.fit(ds,epochs=20,verbose=2)
+        h = self.model.fit(ds,epochs=E,verbose=2)
         hist = h.history
 
         return hist
@@ -76,20 +81,21 @@ class Model_related_things():
         inpred = inpred.reshape(1,-1,1)
         inpred = convert_to_tensor(inpred)
 
-        print(self.model.predict(inpred))
+        return self.model.predict(inpred)
 
+if __name__ =="__ain__":
 
-print("importin")
-Apple_data = pd.read_csv("data_googl.csv")
+    print("importin")
+    Apple_data = pd.read_csv("data_googl.csv")
 
-window = 30
-predday = 7
+    window = 30
+    predday = 7
 
-#print(len(Apple_data))
+    #print(len(Apple_data))
 
-newmodel = Model_related_things(predday,window)
-newmodel.loadmodel("Experiments NB/Model1_pred_7days.h5")
-newmodel.ServePred(Apple_data.Close.values)
+    newmodel = Model_related_things(predday,window)
+    newmodel.loadmodel("Experiments NB/Model1_pred_7days.h5")
+    newmodel.ServePred(Apple_data.Close.values)
 
 #plt.plot(newmodel.trainModel(Apple_data.Close.values)["loss"])
 #plt.show()

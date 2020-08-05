@@ -8,7 +8,6 @@ from tensorflow import convert_to_tensor
 from tensorflow.keras import layers
 from sklearn.preprocessing import MinMaxScaler
 
-print("Finish")
 #tf.random.set_seed(7)
 #np.random.seed(7)
 
@@ -83,19 +82,12 @@ class Model_related_things():
         return self.scaler.inverse_transform(self.model.predict(inpred)).tolist()
 
 if __name__ =="__min__":
-
-    print("importin")
+    print("to test this class")
     Apple_data = pd.read_csv("data_googl.csv")
 
     window = 30
     predday = 7
 
-    #print(len(Apple_data))
-
     newmodel = Model_related_things(predday)
     newmodel.loadmodel("Models/JD_7.h5")
     print(newmodel.ServePred(Apple_data.Close.values))
-
-#plt.plot(newmodel.trainModel(Apple_data.Close.values)["loss"])
-#plt.show()
-

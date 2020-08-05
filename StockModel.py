@@ -66,7 +66,7 @@ class Model_related_things():
 
         optimizer = tf.keras.optimizers.Adam(lr=1e-1)
         l = tf.keras.losses.LogCosh()
-        self.model.compile(optimizer = "SGD", loss = tf.keras.losses.LogCosh())
+        self.model.compile(optimizer = tf.keras.optimizers.Adam(lr=1e-2), loss = tf.keras.losses.LogCosh())
         
         h = self.model.fit(ds,epochs=E,verbose=1)
         hist = h.history
@@ -82,7 +82,7 @@ class Model_related_things():
 
         return self.scaler.inverse_transform(self.model.predict(inpred)).tolist()
 
-if __name__ =="__main__":
+if __name__ =="__min__":
 
     print("importin")
     Apple_data = pd.read_csv("data_googl.csv")

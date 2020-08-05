@@ -1,5 +1,7 @@
 {
     "Stocks": [
-        "JD"
+        "AAPL",
+        "GOOGL",
+        "NVDA"
     ]
 }

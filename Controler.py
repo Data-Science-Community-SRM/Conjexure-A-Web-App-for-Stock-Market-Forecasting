@@ -7,17 +7,14 @@ import pymongo
 from pathlib import Path
 import StockModel
 
-print("Finished ")
+print("Imported Modules")
 
 info = json.loads(open("info.json","r").read())
 
-
 idkwhy = [(i,j) for i in info["Stocks"] for j in ["7","14","21"]]
-#updatedata(info["Stocks"])
 
 user = "Abhishek"
 password = "681dmxUsOW4DZWlr"
-
 
 client = pymongo.MongoClient(f"mongodb+srv://{user}:{password}@clust01.7nxse.mongodb.net")
 
@@ -25,16 +22,11 @@ db = client.predictions
 
 post = {
             "date":datetime.datetime.now(),
-            "stockname": {
-                "7":[],
-                "14":[],
-                "21":[],
-            }
         }
 
 def updatedata():
     for i in info["Stocks"]:
-        df=web.DataReader(i,data_source='yahoo')
+        df=web.DataReader(i,data_source='yahoo',start = "2020-01-04")
         df.to_csv("HistData/data_"+i+".csv")
 
 def EntryExists():
@@ -42,7 +34,7 @@ def EntryExists():
     # change 3 later
     start = datetime.datetime(today.year,today.month,today.day,0,0)
     end = datetime.datetime(today.year,today.month,today.day,23,59)
-    return db.acess.find_one({'date':{'$lt': end, '$gte': start}}) != None
+    return db.data.find_one({'date':{'$lt': end, '$gte': start}}) != None
 
 def ModelPath(A,B):
     return "Models/" + A  + "_" + B  +".h5"
@@ -62,7 +54,7 @@ def MakeTrainSave(L):
         Mod = StockModel.Model_related_things(int(days))
         Mod.NewModel()
         S_data_close = S_data.Close.values
-        Mod.TrainModel(S_data_close,1)
+        Mod.TrainModel(S_data_close,20)
         Mod.SaveModel(ModelPath(S,days))
 
 def MakePreds():
@@ -71,25 +63,19 @@ def MakePreds():
         S_data = pd.read_csv("HistData/data_"+S+".csv")
         S_data_close = S_data.Close.values
         Mod.loadmodel(ModelPath(S, days))
-        post[S][days] = Mod.ServePred(S_data_close)
-    print(post)
-    #db.test.insert_one(post)        
+        if S not in post.keys():
+            post[S] = {}
+        post[S][days] = None
+        post[S][days] = Mod.ServePred(S_data_close)        
 
 if __name__ == "__main__":
     if EntryExists() == False:
-        #updatedata()
-        print("works")
+        updatedata()
+        print("Posting predictions")
         A = AllModelsDontExist()
-        print(A)
         if len(A)!= 0:
             MakeTrainSave(A)
-        dat = MakePreds()
-        post = MakeReq(dat)
+        MakePreds()
         db.data.insert_one(post)
-        
-        
-         
-
-
-
+        print(post)
     

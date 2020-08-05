@@ -40,9 +40,9 @@ def updatedata():
 def EntryExists():
     today = datetime.datetime.today()
     # change 3 later
-    start = datetime.datetime(today.year,today.month,3,0,0)
-    end = datetime.datetime(today.year,today.month,3,23,59)
-    return db.acess.find_one({'date':{'$lt': end, '$gte': start}}) == False
+    start = datetime.datetime(today.year,today.month,today.day,0,0)
+    end = datetime.datetime(today.year,today.month,today.day,23,59)
+    return db.acess.find_one({'date':{'$lt': end, '$gte': start}}) != None
 
 def ModelPath(A,B):
     return "Models/" + A  + "_" + B  +".h5"
@@ -62,16 +62,18 @@ def MakeTrainSave(L):
         Mod = StockModel.Model_related_things(int(days))
         Mod.NewModel()
         S_data_close = S_data.Close.values
-        Mod.TrainModel(S_data_close,2)
+        Mod.TrainModel(S_data_close,1)
         Mod.SaveModel(ModelPath(S,days))
 
 def MakePreds():
-    for i,j in idkwhy:
-        print(i,j)
-
-    
-
-
+    for S,days in idkwhy:
+        Mod = StockModel.Model_related_things(int(days))
+        S_data = pd.read_csv("HistData/data_"+S+".csv")
+        S_data_close = S_data.Close.values
+        Mod.loadmodel(ModelPath(S, days))
+        post[S][days] = Mod.ServePred(S_data_close)
+    print(post)
+    #db.test.insert_one(post)        
 
 if __name__ == "__main__":
     if EntryExists() == False:

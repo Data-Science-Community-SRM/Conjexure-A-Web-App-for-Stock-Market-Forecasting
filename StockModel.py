@@ -8,6 +8,7 @@ from tensorflow import convert_to_tensor
 from tensorflow.keras import layers
 from sklearn.preprocessing import MinMaxScaler
 
+print("Finish")
 #tf.random.set_seed(7)
 #np.random.seed(7)
 
@@ -37,9 +38,7 @@ class Model_related_things():
 
     def loadmodel(self,path):
         
-        S,Days = path.split("/")[-1].split("_")
-        self.Outputdays = int(Days)
-        self.inputdays = 30*(Self.Outputdays // 7)
+        self.inputdays = 30*(self.Outputdays // 7)
     
         self.model = load_model(path)
 
@@ -67,9 +66,9 @@ class Model_related_things():
 
         optimizer = tf.keras.optimizers.Adam(lr=1e-1)
         l = tf.keras.losses.LogCosh()
-        self.model.compile(optimizer = "SGD", loss = "mse" , metrics=[l])
+        self.model.compile(optimizer = "SGD", loss = tf.keras.losses.LogCosh())
         
-        h = self.model.fit(ds,epochs=E,verbose=2)
+        h = self.model.fit(ds,epochs=E,verbose=1)
         hist = h.history
 
         return hist
@@ -81,9 +80,9 @@ class Model_related_things():
         inpred = inpred.reshape(1,-1,1)
         inpred = convert_to_tensor(inpred)
 
-        return self.model.predict(inpred)
+        return self.scaler.inverse_transform(self.model.predict(inpred)).tolist()
 
-if __name__ =="__ain__":
+if __name__ =="__main__":
 
     print("importin")
     Apple_data = pd.read_csv("data_googl.csv")
@@ -93,9 +92,9 @@ if __name__ =="__ain__":
 
     #print(len(Apple_data))
 
-    newmodel = Model_related_things(predday,window)
-    newmodel.loadmodel("Experiments NB/Model1_pred_7days.h5")
-    newmodel.ServePred(Apple_data.Close.values)
+    newmodel = Model_related_things(predday)
+    newmodel.loadmodel("Models/JD_7.h5")
+    print(newmodel.ServePred(Apple_data.Close.values))
 
 #plt.plot(newmodel.trainModel(Apple_data.Close.values)["loss"])
 #plt.show()

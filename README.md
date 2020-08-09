@@ -38,8 +38,8 @@ streamlit run stockpricepred.py
 ```
 ## Contributors
 
-<div class="col-container" style="display: table;width: 100%; ">
-  <div class="col" style="display: table-cell;">
+<div class="col-container" display:table;width: 100%; >
+  <div class="col" display: table-cell;>
     <p align="center">
 <img src = "Images/Aditya.jpg"  height="120" alt="Aditya Mangla">
 </p>
@@ -51,7 +51,7 @@ streamlit run stockpricepred.py
 </p>
   </div>
 
-  <div class="col" style="display: table-cell;">
+  <div class="col" display: table-cell;>
     <p align="center">
 <img src = "Images/Harsh.jpg"  height="120" alt="Harsh Sharma">
 </p>
@@ -63,7 +63,7 @@ streamlit run stockpricepred.py
 </p>
   </div>
 
-  <div class="col" style="display: table-cell;">
+  <div class="col" display: table-cell;>
     <p align="center">
 <img src = "Images/Abhishek.jpg"  height="120" alt="Abhishek Saxena">
 </p>

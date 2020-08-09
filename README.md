@@ -15,10 +15,9 @@
 - ![Web_app](Images/web_app3.png)<br/>
 
 ## Functionalities
-- [ ]  < insert functionality >
-- [ ]  < insert functionality >
-- [ ]  < insert functionality >
-- [ ]  < insert functionality >
+- [ ]  Forecasts Stock Prices of Alphabet Inc. (GOOGL)
+- [ ]  Forecasts Stock Prices of Apple Inc. (APPL)
+- [ ]  Forecast time window can be set by the user
 
 <br>
 
@@ -38,6 +37,44 @@ Running Streamlit scripts is amazingly easy. All you need to do is enter the fol
 streamlit run stockpricepred.py
 ```
 ## Contributors
+
+<div class="col-container" style="display: table;width: 100%; ">
+  <div class="col" style="display: table-cell;">
+    <p align="center">
+<img src = "Images/Aditya.jpg"  height="120" alt="Aditya Mangla">
+</p>
+<p align="center">
+<a href = "https://github.com/aadimangla"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://www.linkedin.com/in/aadimangla">
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+</a>
+</p>
+  </div>
+
+  <div class="col" style="display: table-cell;">
+    <p align="center">
+<img src = "Images/Harsh.jpg"  height="120" alt="Harsh Sharma">
+</p>
+<p align="center">
+<a href = "https://github.com/person2"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://www.linkedin.com/in/person2">
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+</a>
+</p>
+  </div>
+
+  <div class="col" style="display: table-cell;">
+    <p align="center">
+<img src = "Images/Abhishek.jpg"  height="120" alt="Abhishek Saxena">
+</p>
+<p align="center">
+<a href = "https://github.com/person3"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://www.linkedin.com/in/person3">
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+</a>
+</p>
+  </div>
+</div>
 
 <table>
 <tr align="center">

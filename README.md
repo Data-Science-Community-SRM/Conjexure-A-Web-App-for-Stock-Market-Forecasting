@@ -90,11 +90,7 @@ Abhishek Saxena
 </a>
 </p>
 </td>
-</tr>
-  </table>
-  
-  <table>
-<tr align="center">
+
 
 
 <td widht:25%>
@@ -132,7 +128,7 @@ Tarushi Pathak
 
 <td widht:25%>
 
-Ankita
+Ankita Kokkera
 
 <p align="center">
 <img src = "Images/Ankita.jpg"  height="120" alt="Ankita">
@@ -144,11 +140,7 @@ Ankita
 </a>
 </p>
 </td>
-</tr>
-  </table>
-  
-  <table>
-<tr align="center">
+
 
 
 <td widht:25%>
@@ -156,7 +148,7 @@ Ankita
 Sheel Patel
 
 <p align="center">
-<img src = "Images/Sheel.jpg"  height="120" alt="Aditya Mangla">
+<img src = "Images/Sheel.jpg"  height="120" alt="Sheel patel">
 </p>
 <p align="center">
 <a href = "https://github.com/person7"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>

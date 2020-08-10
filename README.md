@@ -38,11 +38,11 @@ streamlit run stockpricepred.py
 ## Contributors
 
 
-<table>
+<table width:75%>
 <tr align="center">
 
 
-<td widht:25%>
+<td widht:100%>
 
 Aditya Mangla
 
@@ -90,7 +90,10 @@ Abhishek Saxena
 </p>
 </td>
 
-
+</tr>
+  </table>
+  <table width:75%>
+<tr align="center">
 
 <td widht:25%>
 
@@ -139,8 +142,11 @@ Ankita Kokkera
 </a>
 </p>
 </td>
+</tr>
+  </table>
 
-
+<table>
+<tr align="center">
 
 <td widht:25%>
 

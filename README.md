@@ -116,7 +116,7 @@ Aditya Shukla
 Tarushi Pathak
 
 <p align="center">
-<img src = "Images/Tarushi.jpg"  height="120" alt="Tarushi Pathak">
+<img src = "https://media-exp1.licdn.com/dms/image/C5103AQEZiMZveCVrzg/profile-displayphoto-shrink_200_200/0?e=1602720000&v=beta&t=iuz9SgVeYNVWuPUzseZijJyt-QshOH7mYn851VV3K9Y"  height="120" alt="Tarushi Pathak">
 </p>
 <p align="center">
 <a href = "https://github.com/person5"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>

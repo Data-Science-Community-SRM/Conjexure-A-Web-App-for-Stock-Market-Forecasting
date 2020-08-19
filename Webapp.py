@@ -4,6 +4,7 @@ import pandas as pd
 import json
 import pymongo
 import datetime
+from Controler import main as updater
 
 user = "Abhishek"
 password = "681dmxUsOW4DZWlr"
@@ -16,6 +17,10 @@ db = client.predictions
 def getpred(start,end):
     pred = db.data.find_one({'date':{'$lt': end, '$gte': start}})
     print("Got OutPut") 
+    if pred is None:
+        print("it is none")
+        updater()
+        pred = getpred
     return pred
 
 today = datetime.datetime.today()
@@ -23,7 +28,7 @@ start = datetime.datetime(today.year,today.month,today.day,0,0)
 end = datetime.datetime(today.year,today.month,today.day,23,59)
 pred = getpred(start,end)
 
-
+st.image('image.jpeg',use_column_width=True)
 st.title("Conjexure ~ Stock Price Forecasting 📈")
 st.header("Welcome to  Conjexure!")
 st.markdown("""
@@ -54,7 +59,8 @@ with st.spinner('Wait for it...'):
     plt.figure(figsize=(10,5))
     plt.grid()
     plt.ylim(0,forplot)
-    plt.plot(S_data["Close"])
-    plt.plot(P_data)
+    plt.plot(S_data["Close"],label = "Market Value")
+    plt.plot(P_data, label = "Prediction")
+    plt.legend()
     st.pyplot()
 

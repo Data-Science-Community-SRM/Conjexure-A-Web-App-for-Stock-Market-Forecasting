@@ -1,0 +1,7 @@
+numpy
+pandas
+streamlit
+matplotlib
+pymongo
+pandas_datareader
+tensorflow==2.2.0

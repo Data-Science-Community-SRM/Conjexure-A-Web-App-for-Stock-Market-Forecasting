@@ -54,7 +54,7 @@ def MakeTrainSave(L):
         Mod = StockModel.Model_related_things(int(days))
         Mod.NewModel()
         S_data_close = S_data.Close.values
-        Mod.TrainModel(S_data_close,20)
+        Mod.TrainModel(S_data_close,100)
         Mod.SaveModel(ModelPath(S,days))
 
 def MakePreds():
@@ -68,7 +68,7 @@ def MakePreds():
         post[S][days] = None
         post[S][days] = Mod.ServePred(S_data_close)        
 
-if __name__ == "__main__":
+def main():
     if EntryExists() == False:
         updatedata()
         print("Posting predictions")
@@ -78,4 +78,7 @@ if __name__ == "__main__":
         MakePreds()
         db.data.insert_one(post)
         print(post)
-    
+
+
+if __name__ == "__main__":
+    main()

@@ -21,7 +21,7 @@ Let's visualize the stock prices value for Alphabet Inc. (GOOGL)
 As you can see from the above graph that it follows a upward trend overall. These are the stock values of Alphabet Inc. from 1st of April 2003 to 15th July 2020.
 ## Getting Started
 
-To play around with Conjexure yourself, head on to our web app at
+To play around with Conjexure yourself, head on to our web app at https://conjexure.herokuapp.com.
 
 ### Running on a local machine
 #### Prerequisites
@@ -52,7 +52,7 @@ Conjexure uses the Tensorflow and Keras libraries to build 5 stacked LSTM models
 
 There are 5 models to forecast into 5 different future windows (from 1-5 weeks) depending on user specification. Each model utilizes a proportionately larger training set to compensate for the increasing prediction window. For example, the model to forecast one week into the future uses the last 30 days of stock price data, the model to forecast two weeks uses the last 60 days of data and so on.
 
-For any stock symbol, up to 5 different price metrics are available, including the opening price, the closing price, the high, the low, etc. Conjexure uses the closing price as the standard stock price. We came to this decision because the closing price accounts for news related to the company and the market's general mood on the day (which can then be predicted by our model.)
+For any stock symbol, up to 5 different price metrics are available, including the opening price, the closing price, the high, the low, etc. Conjexure uses the closing price as the standard stock price. We came to this decision because the closing price accounts for news related to the company and the market's general mood on the day (which can then be predicted by our model).
 
 Model that we have used for deployment have following architecture:
 Model: "sequential"
@@ -84,7 +84,7 @@ The following is the validation and training loss os the above model.<br/>
 ![training loss vs validation loss](Images/loss.png)<br/>
 
 
-From above we can see that our validation loss is noisy this might be due to the fact that we are using stochastic gradient descent which calculate loss based on each sample. But if you look at the y axis values which represent the loss value You will see that out loss value is almost in 10^(-3) which is pretty low loss so even if it's noisy it's quite low so it does not effect our model performance 
+From above we can see that our validation loss is noisy this might be due to the fact that we are using stochastic gradient descent which calculate loss based on each sample. But if you look at the y axis values which represent the loss value You will see that out loss value is almost in 10^(-3) which is pretty low loss so even if it's noisy it's quite low so it does not effect our model performance.
 Following is the mean squarred error graph:<br/>![training loss vs validation loss](Images/mse_loss.png)<br/>
 The above statement regarding the validation loss can be proved by the above mean squarred error plot of validation data.
 

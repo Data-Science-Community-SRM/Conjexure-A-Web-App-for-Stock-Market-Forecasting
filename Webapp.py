@@ -19,7 +19,6 @@ def getpred(start,end):
     pred = db.data.find_one({'date':{'$lt': end, '$gte': start}})
     print("Got OutPut") 
     if pred is None:
-        st.title("Sorry we aren't availible")
         return None
     return pred
 
@@ -27,8 +26,6 @@ today = datetime.datetime.today()
 start = datetime.datetime(today.year,today.month,today.day,0,0)
 end = datetime.datetime(today.year,today.month,today.day,23,59)
 pred = getpred(start,end)
-if pred == None:
-    exit()
 
 st.image('image.jpeg',use_column_width=True)
 st.title("Conjexure ~ Stock Price Forecasting 📈")
@@ -40,37 +37,42 @@ st.markdown("""
 "We have used the Tensorflow and Keras APIs to build a stacked LSTM model with a convolutional as well as a lambda layer. We trained our model on a roughly four-month period from March 1st, 2020 through July 20th, 2020.
 """)
 
-info = json.loads(open("info.json","r").read())
 
-CH1 = st.selectbox("Stock", info["Stocks"])
+if pred == None:
+    st.title("Sorry we aren't availible at the moment. Try again later")
+else:  
+    info = json.loads(open("info.json","r").read())
 
-week = ["7","14","21"]
-CH2 = st.selectbox("Choice of Future Forecast Period", week)
+    CH1 = st.selectbox("Stock", info["Stocks"])
 
-#S_data = pd.read_csv("HistData/data_"+CH1+".csv")
+    week = ["7","14","21"]
+    CH2 = st.selectbox("Choice of Future Forecast Period", week)
+    #S_data = pd.read_csv("HistData/data_"+CH1+".csv")
 
-@st.cache(persist=True, max_entries = 2)
-def getstock(CH1):
-    S_data = web.DataReader(CH1,data_source='yahoo',start = "2020-01-04")
-    return S_data
+    @st.cache(persist=True, max_entries = 2)
+    def getstock(CH1):
+        S_data = web.DataReader(CH1,data_source='yahoo',start = "2020-03-01")
+        return S_data
 
-S_data = getstock(CH1)
+    S_data = getstock(CH1)
 
-#S_data["Date"] = pd.to_datetime(S_data["Date"])
+    #S_data["Date"] = pd.to_datetime(S_data["Date"])
 
-P_data = pd.DataFrame({'A':pred[CH1][CH2][0]})
-P_data.index = pd.date_range(start = today, periods = int(CH2))
+    P_data = pd.DataFrame({'A':pred[CH1][CH2][0]})
+    P_data.index = pd.date_range(start = today, periods = int(CH2))
 
-#S_data = S_data.set_index("Date")
+    #S_data = S_data.set_index("Date")
 
-forplot = S_data.Close.max() + S_data.Close.mean()/4
+    forplot = S_data.Close.max() + S_data.Close.mean()/1
 
-with st.spinner('Wait for it...'):
-    plt.figure(figsize=(10,5))
-    plt.grid()
-    plt.ylim(0,forplot)
-    plt.plot(S_data["Close"],label = "Market Value")
-    plt.plot(P_data, label = "Prediction")
-    plt.legend()
-    st.pyplot()
+    with st.spinner('Wait for it...'):
+        plt.figure(figsize=(10,5))
+        plt.grid()
+        plt.ylim(0,forplot)
+        plt.plot(S_data["Close"],label = "Market Value")
+        plt.plot(P_data, label = "Prediction")
+        plt.legend()
+        st.pyplot()
+
+st.write("###### ",today.date())
 

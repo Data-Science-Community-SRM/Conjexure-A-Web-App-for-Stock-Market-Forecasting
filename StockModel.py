@@ -65,7 +65,7 @@ class Model_related_things():
 
         optimizer = tf.keras.optimizers.Adam(lr=1e-1)
         l = tf.keras.losses.LogCosh()
-        self.model.compile(optimizer = tf.keras.optimizers.Adam(lr=1e-2), loss = tf.keras.losses.LogCosh())
+        self.model.compile(optimizer = tf.keras.optimizers.SGD(lr=1e-2,momentum=0.9), loss = tf.keras.losses.LogCosh())
         
         h = self.model.fit(ds,epochs=E,verbose=1)
         hist = h.history

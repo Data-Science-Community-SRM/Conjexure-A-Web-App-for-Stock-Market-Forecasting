@@ -26,7 +26,7 @@ post = {
 
 def updatedata():
     for i in info["Stocks"]:
-        df=web.DataReader(i,data_source='yahoo',start = "2020-01-04")
+        df=web.DataReader(i,data_source='yahoo')
         df.to_csv("HistData/data_"+i+".csv")
 
 def EntryExists():

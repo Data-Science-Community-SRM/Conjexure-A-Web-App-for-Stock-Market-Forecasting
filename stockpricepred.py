@@ -7,6 +7,7 @@ from tensorflow import keras
 import tensorflow.keras.backend
 import pandas_datareader as web
 from sklearn.preprocessing import MinMaxScaler
+import yfinance as yf
 
 # cover image used and streamlit function call to display image
 image_path = ('image.jpeg')
@@ -61,7 +62,7 @@ def load_model_app(forecast_window):
 
 
 # function to load data from dataset
-@st.cache(persist=True)
+@st.cache_data(persist=True)
 def load_data(path, nrows):
     data = pd.read_csv(filepath_or_buffer=path, nrows=nrows)
     return data
@@ -192,7 +193,7 @@ if __name__ == "__main__":
 
     if stock_choice == 'Alphabet (GOOGL)':
         # Reading the data
-        df_test = web.DataReader('GOOGL', data_source='yahoo', start='10-01-2019', end='07-20-2020')
+        df_test = yf.download('GOOGL', start='2019-10-01', end='2020-07-20')
 
         # Displaying historical data for Alphabet
         st.subheader("Graph of Alphabet Inc.'s Historical Stock Prices")
@@ -242,7 +243,7 @@ if __name__ == "__main__":
     elif stock_choice == 'Apple (AAPL)':
 
         # Reading the data
-        df_test = web.DataReader('AAPL', data_source='yahoo', start='10-01-2019', end='07-20-2020')
+        df_test = yf.download('AAPL', start='10-01-2019', end='07-20-2020')
 
         # Displaying historical data for Alphabet
         st.subheader("Graph of Apple Inc.'s Historical Stock Prices")

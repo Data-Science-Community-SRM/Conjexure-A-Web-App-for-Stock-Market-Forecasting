@@ -13,11 +13,13 @@ import yfinance as yf
 image_path = ('image.jpeg')
 st.image(image_path, use_column_width=True)
 
+#disable warning
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # basic title and markdown
 st.title("Conjexure ~ Stock Price Forecasting 📈")
 st.header("Welcome to Conjexure!")
 st.markdown(
-    "In this Machine Learning application, we have used the historical stock price data for Alphabet (GOOGL) and Apple Inc. (AAPL) to forecast their price in a specified future window.")
+    "In this Machine Learning application, we have used the historical stock price data for Alphabet (GOOG) and Apple Inc. (AAPL) to forecast their price in a specified future window.")
 st.markdown(
     "We have used the Tensorflow and Keras APIs to build a stacked LSTM model with a convolutional as well as a lambda layer. We trained our model on a roughly four-month period from March 1st, 2020 through July 20th, 2020.")
 
@@ -176,8 +178,8 @@ def future_predicted(testbatches, window_size, predday):
 if __name__ == "__main__":
     st.markdown(
         "You may go over the raw data for Alphabet or Apple. Just go to the sidebar and select your stock of choice. We have used the closing price as the generic price. ")
-    choice = st.selectbox("Show Raw Data", ['Alphabet (GOOGL)', 'Apple (APPL)'])
-    if choice == 'Alphabet (GOOGL)':
+    choice = st.selectbox("Show Raw Data", ['Alphabet (GOOG)', 'Apple (APPL)'])
+    if choice == 'Alphabet (GOOG)':
         data = load_data(path_googl, 4000)
         st.write(data)
     elif choice == 'Apple (APPL)':
@@ -185,13 +187,13 @@ if __name__ == "__main__":
         st.write(data)
 
     # Dropdown Menu to Choose Company Stock
-    st.subheader("Choose from Apple Inc. (AAPL) and Alphabet Inc. (GOOGL) to predict their future stock prices.")
-    stock_choice = st.selectbox("Choice of Company Stock", ['Alphabet (GOOGL)', 'Apple (AAPL)'])
+    st.subheader("Choose from Apple Inc. (AAPL) and Alphabet Inc. (GOOG) to predict their future stock prices.")
+    stock_choice = st.selectbox("Choice of Company Stock", ['Alphabet (GOOG)', 'Apple (AAPL)'])
 
     # st.subheader("Select the period (1-5 weeks) into the future for when you would like to see the forecast: ")
     # forecast_window = st.selectbox("Choice of Future Forecast Period", ['1 week','2 weeks','3 weeks','4 weeks','5 weeks'])
 
-    if stock_choice == 'Alphabet (GOOGL)':
+    if stock_choice == 'Alphabet (GOOG)':
         # Reading the data
         df_test = yf.download('GOOGL', start='2019-10-01', end='2020-07-20')
 

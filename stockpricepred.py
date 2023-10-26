@@ -243,7 +243,7 @@ if __name__ == "__main__":
     elif stock_choice == 'Apple (AAPL)':
 
         # Reading the data
-        df_test = yf.download('AAPL', start='10-01-2019', end='07-20-2020')
+        df_test = yf.download('AAPL', start='2019-01-10', end='2020-07-20')
 
         # Displaying historical data for Alphabet
         st.subheader("Graph of Apple Inc.'s Historical Stock Prices")

@@ -195,7 +195,7 @@ if __name__ == "__main__":
 
     if stock_choice == 'Alphabet (GOOG)':
         # Reading the data
-        df_test = yf.download('GOOGL', start='2019-10-01', end='2020-07-20')
+        df_test = yf.download('GOOGL', start='2019-10-01', end='2023-01-01')
 
         # Displaying historical data for Alphabet
         st.subheader("Graph of Alphabet Inc.'s Historical Stock Prices")

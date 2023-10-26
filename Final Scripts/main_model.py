@@ -5,9 +5,10 @@ import pandas_datareader as web
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import yfinance as yf
 
 # using JD as its not as stable
-df_g=web.DataReader('GOOGL',data_source='yahoo',start='04-01-2003',end='07-15-2020')
+df_g=yf.download('GOOG', start='2019-10-01', end='2023-01-01')
 
 
 #SCALING : 

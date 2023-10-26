@@ -9,20 +9,25 @@ import pandas_datareader as web
 from sklearn.preprocessing import MinMaxScaler
 import yfinance as yf
 
+# Set page configuration as the first Streamlit command
+st.set_page_config(
+    page_title="Conjexure | HOME",
+    page_icon="📈",
+)
+
 # cover image used and streamlit function call to display image
-image_path = ('image.jpeg')
+image_path = 'image.jpeg'
 st.image(image_path, use_column_width=True)
 
-# basic title and markdown
+# Now you can continue with the rest of your Streamlit code
 st.title("Conjexure ~ Stock Price Forecasting 📈")
 st.header("Welcome to Conjexure!")
 st.markdown(
     "In this Machine Learning application, we have used the historical stock price data for Alphabet (GOOG) and Apple Inc. (AAPL) to forecast their price in a specified future window.")
 st.markdown(
     "We have used the Tensorflow and Keras APIs to build a stacked LSTM model with a convolutional as well as a lambda layer. We trained our model on a roughly four-month period from March 1st, 2020 through July 20th, 2020.")
-
-path_googl = ('data_googl.csv')
-path_aapl = ('data_aapl.csv')
+path_googl = 'data_googl.csv'
+path_aapl = 'data_aapl.csv'
 
 
 # function to load separate models on the basis of user choice

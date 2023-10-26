@@ -13,8 +13,6 @@ import yfinance as yf
 image_path = ('image.jpeg')
 st.image(image_path, use_column_width=True)
 
-#disable warning
-st.set_option('deprecation.showPyplotGlobalUse', False)
 # basic title and markdown
 st.title("Conjexure ~ Stock Price Forecasting 📈")
 st.header("Welcome to Conjexure!")
@@ -157,7 +155,7 @@ def plot_graph(forecast, forecast_window_int, a):
 
     plt.legend(["Actual Days", "Prediction"])
     plt.title('Prediction for next {} Days'.format(forecast_window_int))
-    st.pyplot()
+    st.pyplot(plt)
 
 
 def future_predicted(testbatches, window_size, predday):
@@ -171,7 +169,7 @@ def future_predicted(testbatches, window_size, predday):
     plt.legend(['Actual Values', 'Predicted Values'])
     plt.title('Prediction for {} Days'.format(predday))
 
-    st.pyplot()
+    st.pyplot(plt)
 
 
 # main function

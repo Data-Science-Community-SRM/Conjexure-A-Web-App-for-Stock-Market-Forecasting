@@ -113,5 +113,7 @@ Below is the forecast of the stock values for 21st July 2020 to 27th July 2020 b
 - Aditya Shukla
 - Sheel Patel
 - Ankita Kokkera
+- Aditya Verma
+- Divjot
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -1,52 +1,48 @@
-# Time Series Forecasting with Deep Learning (LSTM)
+# Time Series Forecasting with Deep Learning Models
 
-The provided code is a detailed implementation for time series forecasting using deep learning models, specifically Long Short-Term Memory (LSTM) networks. This README will walk you through the code's functionality and structure step by step.
+This code is a Python script for time series forecasting using various deep learning models, specifically Convolutional and Recurrent Neural Networks (CNNs and LSTMs). It is used for predicting stock prices. Let's break down the code step by step:
 
-## Data Preparation and Exploration
-1. The code starts by importing necessary libraries like NumPy, Pandas, TensorFlow, and Matplotlib.
-2. It uses the `pandas_datareader` library to fetch historical stock price data for Google (GOOGL) from Yahoo Finance, covering the time period from April 1, 2003, to July 15, 2020.
-3. It then prints the DataFrame containing the fetched data and plots the 'High' prices.
+## 1. Importing Libraries
+- `numpy` (as `np`): NumPy is a popular library for numerical operations in Python.
+- `pandas_datareader`: A library for fetching financial data from various sources.
+- `pandas` (as `pd`): Pandas is a data manipulation library.
+- `tensorflow` (as `tf`): TensorFlow is an open-source machine learning framework.
+- `matplotlib.pyplot` (as `plt`): Matplotlib is a library for creating visualizations.
+- `yfinance` (as `yf`): This library is used for downloading financial data from Yahoo Finance.
 
-## Data Scaling
-4. The code uses Min-Max scaling (feature scaling) to transform the stock closing prices to a range between 0 and 0.75. Scaling helps the neural network to converge more effectively.
+## 2. Data Retrieval
+- The code uses Yahoo Finance (`yf.download`) to fetch historical stock price data for Google (GOOGL) from July 1, 2015, to July 1, 2023, and stores it in the `df_g` variable.
+- The retrieved data is printed to the console using `print(df_g)`.
 
-## Data Splitting
-5. The dataset is divided into training, testing, and forecasting sets.
-6. The training data includes 90% of the dataset, while the remaining 10% is used for testing.
-7. A window of the last 30 days is selected as the input window size.
-8. An additional 7 days are used for forecasting future stock prices.
+## 3. Data Preprocessing
+- Min-Max scaling is applied to the "Close" price data from `df_g` to transform it to a range between 0 and 0.75.
+- The time series data is reshaped into a suitable format for input to a neural network.
+- The data is split into training, testing, and forecast datasets based on the specified window size and prediction day (in this case, 30 days for training and 7 days for testing and forecasting).
 
-## Data Windowing and Batching
-9. The `windowed_dataset` function is defined to create windowed and batched datasets for training and testing.
-10. It prepares the data by creating sequences with the specified window size and forecasting days.
-11. The data is shuffled and then batched for improved training efficiency.
+## 4. Data Batching
+- The `windowed_dataset` function is defined to create TensorFlow data pipelines for training and testing data.
+- Training and testing data are split into batches using this function.
 
-## Model Building
-12. The code defines a deep learning model using TensorFlow's Keras API.
-13. The model consists of Convolutional layers, multiple LSTM layers, and Dense layers.
-14. The model is optimized for time series forecasting.
-15. The model summary is printed to provide an overview of the architecture.
+## 5. Model Building
+- A deep learning model is defined using TensorFlow's Keras API. The model consists of several layers, including Convolutional 1D (Conv1D) and Long Short-Term Memory (LSTM) layers.
+- The model is compiled with an optimizer, loss function, and metrics.
+- Model training is performed with a specified number of epochs, and the training history is saved in the `hist` variable.
 
-## Model Training
-16. The model is compiled using the Adam optimizer, Huber loss function, and Mean Squared Error (MSE) as a metric.
-17. It is then trained using the training dataset for a specified number of epochs.
-18. The training history (loss and MSE) is stored in `hist` for later visualization.
+## 6. Model Evaluation and Visualization
+- The code then evaluates the model using the test dataset and plots the training and validation loss and mean squared error for visualization.
+- It also generates predictions on the test dataset and plots the actual vs. predicted values for a sample.
 
-## Model Evaluation
-19. The code provides a function `visualplotloss` to visualize the model's predictions against actual values for the test dataset.
-20. The evaluation is also conducted, and the model's performance is assessed using the test dataset.
+## 7. Saving the Model
+- The trained model is saved to an H5 file using the `model.save` function.
 
-## Model Saving
-21. The trained models are saved to separate files based on the forecast period (7 days, 14 days, 21 days, 28 days, 35 days).
-22. This allows for future use and comparison of different forecast models.
+## 8. Additional Models
+- The code defines and trains additional models (Model 2, Model 3, Model 4, and Model 5) using similar procedures, with varying window sizes and prediction day values.
+- These models are evaluated and saved in a manner similar to the first model.
 
-## Data Preparation for Future Forecast
-23. The code further fetches recent data from Yahoo Finance for a specific period from March 1, 2020, to July 20, 2020.
-24. The 'Close' prices of this dataset are scaled using the same Min-Max scaler applied earlier.
+## 9. Download of Additional Test Data
+- The code downloads additional test data from Yahoo Finance for the specified date range.
 
-## Model Application and Visualization
-25. The code loads the previously saved models based on the user's choice of forecast window (1 week, 2 weeks, etc.).
-26. It applies the selected model to predict the future stock prices based on the most recent data.
-27. The predictions are then visualized alongside the actual values for the forecasting period.
+## 10. Visualizing Model Predictions on New Test Data
+- The code visualizes the predictions made by each of the five models on the new test data.
 
-This code essentially demonstrates how to preprocess, split, and forecast stock prices using deep learning techniques, specifically LSTM-based models. It provides insights into different models with varying forecasting windows and shows the prediction results graphically.
+In summary, this code fetches historical stock price data, preprocesses it, trains five different models for time series forecasting with varying time windows and prediction horizons, evaluates the models, and saves them. It also demonstrates the model predictions on new test data.

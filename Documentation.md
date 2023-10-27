@@ -3,7 +3,7 @@
 Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Stock prediction using machine learning is one of the ho topic. In stock prediction model we basically train a model using reccurent neural networks such as an Long Short Term Memory Model. We use RNNs as they were designed to work with sequence prediction problems. Sequence prediction problems come in many forms and are best described by the types of inputs and outputs supported. LSTM is a type of RNN which is good at handling long term dependecies which is benifitable to us in predicting stock prices based on last 30 or 60 days for further 7-14 days.
 
 ## Description
-Conjexure utilizes the stock prices for Alphabet Inc. (GOOGL) and Apple Inc (AAPL) for training. The reason behind this is as there closing stock price graph over the time period is quite smooth if seen overall and avoids any sudden jumps or falls and follows a upward trend. We can forecast into a user-specified future window of 1-5 weeks. We leave this upto user to select the period of time he/she wants to predict the stock values for. It also displays the raw data for the user to inspect. For the stock price, the closing price of a stock on any given day is chosen.
+Conjexure utilizes the stock prices for Alphabet Inc. (GOOG) and Apple Inc (AAPL) for training. The reason behind this is as there closing stock price graph over the time period is quite smooth if seen overall and avoids any sudden jumps or falls and follows a upward trend. We can forecast into a user-specified future window of 1-5 weeks. We leave this upto user to select the period of time he/she wants to predict the stock values for. It also displays the raw data for the user to inspect. For the stock price, the closing price of a stock on any given day is chosen.
 
 The technical stack we have used is as follows: <br/>
 - Tensorflow(Keras)    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        Building Model<br/>
@@ -14,7 +14,7 @@ The technical stack we have used is as follows: <br/>
 For deployment of Conjexure as an interactive web app, the [Streamlit](https://www.streamlit.io) framework was chosen for its robustness and ease of scripting.
 You may go through the documentation for Streamlit [here.](https://docs.streamlit.io/en/stable/)
 
-Let's visualize the stock prices value for Alphabet Inc. (GOOGL)
+Let's visualize the stock prices value for Alphabet Inc. (GOOG)
 ![stock_high_prices](Images/stock_graph.png)
 
 As you can see from the above graph that it follows a upward trend overall. These are the stock values of Alphabet Inc. from 1st of April 2003 to 15th July 2023.

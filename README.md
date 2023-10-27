@@ -9,7 +9,7 @@
 ---
 [![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](Documentation.md) 
 [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](Images/web_app.png)
-![Status](https://img.shields.io/website-up-down-green-red/.svg)
+![Status](https://img.shields.io/website-up-down-green-red/https://github.com/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
 ![Forks](https://img.shields.io/github/forks/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
 ![Issues](https://img.shields.io/github/issues/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
 ![PR](https://img.shields.io/github/issues-pr/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)

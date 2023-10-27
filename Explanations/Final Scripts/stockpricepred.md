@@ -1,58 +1,57 @@
 # Stock Price Forecasting Web Application
 
-This Python script uses the Streamlit library to create a web application for stock price forecasting. It allows users to select a company's stock (Alphabet - GOOGL or Apple - AAPL), choose a forecasting period (1 to 5 weeks), and view historical stock price data along with a forecasted stock price graph.
+This repository contains a Python script for a Streamlit web application that provides stock price forecasting for Alphabet Inc. (GOOG) and Apple Inc. (AAPL). The application uses historical stock price data and deep learning models to predict future stock prices.
 
 ## Table of Contents
+1. [Importing Libraries](#importing-libraries)
+2. [Streamlit Page Configuration](#streamlit-page-configuration)
+3. [Displaying an Image](#displaying-an-image)
+4. [Introduction and Description](#introduction-and-description)
+5. [Loading Models and Data](#loading-models-and-data)
+6. [Mapping Function](#mapping-function)
+7. [Windowing Functions](#windowing-functions)
+8. [Plotting Function](#plotting-function)
+9. [Forecast Function](#forecast-function)
+10. [Main Application](#main-application)
 
-1. [Imported Libraries](#imported-libraries)
-2. [Cover Image](#cover-image)
-3. [Title and Markdown](#title-and-markdown)
-4. [Data Paths](#data-paths)
-5. [Load Model Functions](#load-model-functions)
-6. [Load Data Function](#load-data-function)
-7. [Mapping Function](#mapping-function)
-8. [Windowing Functions](#windowing-functions)
-9. [Plotting Functions](#plotting-functions)
-10. [Main Function](#main-function)
+### Importing Libraries
 
-## Imported Libraries
+The script starts by importing various Python libraries, including Streamlit, NumPy, Pandas, Matplotlib, TensorFlow, pandas_datareader, scikit-learn, and yfinance.
 
-The code imports several Python libraries, including Streamlit, NumPy, Pandas, Matplotlib, TensorFlow, and other related modules. These libraries are used for data manipulation, visualization, and machine learning.
+### Streamlit Page Configuration
 
-## Cover Image
+The `st.set_page_config` function is used to configure the Streamlit web page with a title and an icon.
 
-The code loads an image ('image.jpeg') and displays it using the `st.image` function from Streamlit, setting it to use the column width.
+### Displaying an Image
 
-## Title and Markdown
+An image (probably a logo or cover image) is displayed on the web page using the `st.image` function.
 
-It sets the title and introductory text for the web application using the `st.title` and `st.markdown` functions. The markdown section explains the purpose of the application and the machine learning model used for stock price forecasting.
+### Introduction and Description
 
-## Data Paths
+The script introduces the application with a title, a header, and multiple Markdown descriptions explaining what the application does, including the use of TensorFlow and Keras for building LSTM models for stock price forecasting.
 
-Paths to CSV files ('data_googl.csv' and 'data_aapl.csv') are defined, but these paths are not used in the provided code.
+### Loading Models and Data
 
-## Load Model Functions
+Functions are defined to load different pre-trained deep learning models based on the user's choice. These models are used for stock price forecasting. Models are loaded based on the forecast window (e.g., 1 week, 2 weeks) selected by the user. A caching decorator `@st.cache_data` is applied to the `load_data` function to cache the data, reducing data loading time.
 
-Two functions, `load_model` and `load_model_app`, are defined to load pre-trained machine learning models based on the user's choice of a forecasting period (1 to 5 weeks). These models are built using TensorFlow/Keras and are used for making stock price forecasts.
+### Mapping Function
 
-## Load Data Function
+The `mapper` function maps the user's selection of the forecast window (e.g., '1 week') to the corresponding number of days (e.g., 7 days).
 
-The `load_data` function uses Streamlit's `@st.cache` decorator to read data from CSV files. It returns a Pandas DataFrame with the loaded data. The `nrows` parameter allows limiting the number of rows to load, but it's not used in the code.
+### Windowing Functions
 
-## Mapping Function
+Several functions (`windowed_dataset`, `windowed_dataset1`, `windowed_dataset2`, `windowed_dataset3`, and `windowed_dataset4`) are defined to create windowed datasets from the input data. These datasets are used for training and testing the deep learning models. The window size, prediction day, batch size, and shuffle buffer parameters can be adjusted.
 
-The `mapper` function maps user-selected forecasting periods (e.g., '1 week') to corresponding integer values (e.g., 7).
+### Plotting Function
 
-## Windowing Functions
+The `plot_graph` function is used to plot the actual stock price data and the model's predicted stock prices. The plotting varies depending on the selected forecast window.
 
-Several functions (`windowed_dataset`, `windowed_dataset1`, `windowed_dataset2`, `windowed_dataset3`, and `windowed_dataset4`) are defined to create windowed datasets for time series data. These datasets are used for training and testing machine learning models.
+### Forecast Function
 
-## Plotting Functions
+The `future_predicted` function takes a test batch and uses a pre-trained model to make predictions. It then plots the actual and predicted values for a specified number of days.
 
-The `plot_graph` and `future_predicted` functions are responsible for plotting stock price graphs. `plot_graph` plots the final forecasted stock prices, and `future_predicted` plots the predicted values.
+### Main Application
 
-## Main Function
+The main part of the script is inside an `if __name__ == "__main__":` block. Users can choose to view historical data for Alphabet (GOOG) or Apple (AAPL) stock prices. The selected stock's historical data is displayed using a line chart. Users can select a forecast window (e.g., 1 week, 2 weeks). The historical stock price data is preprocessed, scaled, and windowed based on the forecast window. The appropriate pre-trained model is loaded based on the user's choices, and the model is used to make predictions for the selected forecast window. The predictions are then plotted, showing both actual and forecasted stock prices.
 
-The main part of the code is wrapped in an `if __name__ == "__main__":` block. It allows users to select either Alphabet (GOOGL) or Apple (AAPL) stock data and choose a forecasting period. Depending on the user's choices, the code downloads historical stock price data using Yahoo Finance, preprocesses the data (scaling and windowing), loads a pre-trained machine learning model, and generates stock price forecasts. The forecasted data is plotted using the `plot_graph` function.
-
-Overall, this code creates a Streamlit web application for stock price forecasting, providing users with the ability to choose a stock, set a forecasting period, and view historical and forecasted stock price data. The code integrates machine learning models to generate forecasts based on the chosen parameters.
+This Streamlit web application provides a user-friendly interface for stock price forecasting and visualization for Alphabet (GOOG) and Apple (AAPL) based on the selected forecast period. Users can interact with the app to explore historical data and future price predictions.

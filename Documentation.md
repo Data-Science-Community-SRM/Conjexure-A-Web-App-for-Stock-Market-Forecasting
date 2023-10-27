@@ -1,4 +1,3 @@
-
 # Conjexure
 
 Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Stock prediction using machine learning is one of the ho topic. In stock prediction model we basically train a model using reccurent neural networks such as an Long Short Term Memory Model. We use RNNs as they were designed to work with sequence prediction problems. Sequence prediction problems come in many forms and are best described by the types of inputs and outputs supported. LSTM is a type of RNN which is good at handling long term dependecies which is benifitable to us in predicting stock prices based on last 30 or 60 days for further 7-14 days.
@@ -18,7 +17,7 @@ You may go through the documentation for Streamlit [here.](https://docs.streamli
 Let's visualize the stock prices value for Alphabet Inc. (GOOGL)
 ![stock_high_prices](Images/stock_graph.png)
 
-As you can see from the above graph that it follows a upward trend overall. These are the stock values of Alphabet Inc. from 1st of April 2003 to 15th July 2020.
+As you can see from the above graph that it follows a upward trend overall. These are the stock values of Alphabet Inc. from 1st of April 2003 to 15th July 2023.
 ## Getting Started
 
 To play around with Conjexure yourself, head on to our web app at https://conjexure.herokuapp.com.
@@ -33,14 +32,14 @@ To run Conjexure on your local machine, first ensure that the following relevant
 3. [NumPy](numpy.org)
 4. [Matplotlib.pyplot](https://matplotlib.org/api/pyplot_api.html)
 
-To install Streamlit, use the given pip command.
+* To install the required dependencies and modules, please execute the provided pip command.
 ```bash
-pip install streamlit
+pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib
 ```
-### Running 
-Download the zip file from our repository and unzip into the desired directory.
 
-Running Streamlit scripts is amazingly easy. All you need to do is enter the following line in your terminal.
+* Clone this repository either through GitHub Desktop or your command line interface, based on your personal preference.
+
+Executing Streamlit scripts is remarkably straightforward. Simply navigate to your cloned directory and input the following command into your terminal.
 
 ```bash
 streamlit run stockpricepred.py

@@ -7,3 +7,4 @@ keras
 scikit-learn
 matplotlib
 pandas_datareader
+subprocess

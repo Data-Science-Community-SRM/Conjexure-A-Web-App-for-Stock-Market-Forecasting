@@ -1,45 +1,72 @@
-# Stock Market Data Analysis Python Script
+# Financial Data Analysis and Machine Learning Preparation
 
-This Python script is designed for analyzing and preparing stock market data. It provides an overview of its functionality, structure, and the relevant programming concepts and libraries used.
+This repository contains a Python script that performs various tasks related to financial data analysis and preparation for machine learning. Let's break down the code step by step:
 
-## Importing Libraries
+## 1. Importing Libraries
 
-The code starts by importing several Python libraries, essential for data analysis and visualization:
+- `pandas` (as `pd`): A library for data manipulation and analysis.
+- `numpy` (as `np`): A library for numerical operations.
+- `seaborn` (as `sns`): A data visualization library based on Matplotlib.
+- `matplotlib.pyplot` (as `plt`): A library for creating visualizations and plots.
+- `yfinance` (as `yf`): A library for fetching historical stock data from Yahoo Finance.
+- `pandas_datareader as web`: A library for extracting data from various Internet sources, including Yahoo Finance.
 
-- `pandas` and `numpy` for data manipulation and array handling.
-- `seaborn` and `matplotlib.pyplot` for data visualization.
-- `pandas_datareader` for extracting stock market data from the web.
+## 2. `UpdateCSV` Function
 
-## Data Extraction
+The code defines a function named `UpdateCSV` with two parameters:
+- `stock`: The stock symbol (default is 'GOOGL' for Google).
+- `update`: A boolean flag (default is `True`) that determines whether to update the CSV file.
 
-The `UpdateCSV` function is defined to extract stock market data for a specified stock symbol (default is 'GOOGL') and time period (from April 1, 2020, to June 30, 2020) using the Yahoo Finance API. It updates a CSV file named "DATA.csv" with the obtained data and returns the DataFrame containing stock information.
+The function does the following:
+- Downloads historical stock data for the specified stock symbol (default 'GOOGL') from July 1, 2021, to July 1, 2023, using Yahoo Finance. The data is stored in a Pandas DataFrame (`df_g`).
+- If `update` is `True`, it saves the DataFrame to a CSV file named "DATA.csv" in the current working directory.
+- Finally, it returns the DataFrame `df_g`.
 
-## Parsing Date
+## 3. Main Code
 
-The code demonstrates how to work with date columns in the DataFrame. It converts the "DATE" column to datetime objects and sets the date as the index of the DataFrame.
+The `if __name__ == "__main__":` block calls the `UpdateCSV` function to update the CSV file with Google (Alphabet A Inc) stock data for the specified date range.
 
-## Data Visualization
+## 4. Data Processing
 
-Matplotlib is used to create a line plot of stock data, including open, close, and high prices, providing a visual representation of the stock market data.
+The code then demonstrates reading the CSV file "DATA.csv" and performing some initial data processing:
+- It reads the CSV file into a Pandas DataFrame (`df_g`).
+- Converts the "Date" column from a string to a timestamp object using `pd.to_datetime`.
+- Sets the "Date" column as the index of the DataFrame using `set_index`.
 
-## Data Description
+## 5. Data Visualization
 
-The `describe()` function is employed to provide statistical summary information about the DataFrame, giving insights into the data's central tendencies, spread, and shape.
+Next, it plots the "Open," "Close," and "High" stock prices over time using Matplotlib.
 
-## Data Conversion
+## 6. Summary Statistics
 
-The `ConvToNpaArr` function converts the DataFrame to a NumPy array for model preprocessing. This conversion is often necessary when working with machine learning models that expect array-like input.
+The `df_g.describe()` function is used to provide summary statistics of the DataFrame, such as count, mean, standard deviation, minimum, and maximum values for each column.
 
-## Data Normalization
+## 7. Data Shape
 
-The code performs data normalization using the MinMaxScaler from `sklearn.preprocessing`. Normalization scales all data points to fall between 0 and 1. This step is common when working with machine learning models to ensure all features have the same scale.
+`df_g.shape` is used to print the shape of the DataFrame, indicating the number of days and features (585 days and 6 stock features).
 
-## Train-Test Split
+## 8. Utility Functions
 
-The data is split into a training set and a testing set. The first 80% of the data is used as the training set, and the remaining 20% is used as the testing set, allowing for model training and evaluation.
+The code defines two utility functions:
+- `ConvToNpaArr`: Converts a DataFrame to a NumPy array. Useful for machine learning preprocessing.
+- `NormalisingData`: Normalizes data using Min-Max scaling. Takes an array as input and scales all data points to be within the range [0, 1].
 
-## Printing Data Set Sizes
+## 9. Data Normalization
 
-Finally, the code prints the sizes of the training and testing sets, showing the number of data points in each set.
+The script then converts the DataFrame `df_g` to an array and normalizes the data using the defined functions. The normalized data is stored in the variable `Scaled_data`.
 
-This code is a part of a data preprocessing and exploration pipeline for stock market data. It prepares the data for further analysis or machine learning modeling by extracting, cleaning, and transforming the data. The code's explanations and comments make it more understandable for readers interested in working with financial data.
+## 10. Data Visualization (Normalized)
+
+It plots the first 10 rows of the normalized data.
+
+## 11. Train-Test Split
+
+The script performs a train-test split on the normalized data:
+- `train_ind` calculates the index for an 80:20 split (80% training and 20% testing).
+- It creates two arrays, `train_scaled_data` and `test_scaled_data`, for training and testing data, respectively.
+
+## 12. Data Set Sizes
+
+It prints the size of the training and testing datasets.
+
+This code is essentially a data preparation and exploration pipeline for a machine learning project that involves stock price prediction. It downloads historical stock data, processes it, normalizes it, and splits it into training and testing sets for further analysis and modeling.

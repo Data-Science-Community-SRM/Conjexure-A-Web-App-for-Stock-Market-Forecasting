@@ -17,7 +17,7 @@
 ![Views](https://views.whatilearened.today/views/github/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
 
 ## Preview
-![Web_app](Images/web_app2.png)<br/>
+![Web_app](Images/web_app2.png)<br/><br/><br/>
 ![Web_app](Images/web_app3.png)<br/>
 
 ## Functionalities

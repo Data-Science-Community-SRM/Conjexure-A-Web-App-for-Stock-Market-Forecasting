@@ -31,7 +31,7 @@
 
 * To install the required dependencies and modules, please execute the provided pip command.
 ```bash
-pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib pandas_datareader subprocess
+pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib pandas_datareader
 ```
 
 * Clone this repository either through GitHub Desktop or your command line interface, based on your personal preference.

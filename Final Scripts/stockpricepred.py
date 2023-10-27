@@ -204,8 +204,7 @@ if __name__ == "__main__":
         # Inputting forecast window
         st.subheader(
             "Select the period (1-5 weeks) into the future for when you would like to see %s's forecast: " % stock_choice)
-        forecast_window = st.selectbox("Choice of Future Forecast Period",
-                                       ['1 week', '2 weeks', '3 weeks', '4 weeks', '5 weeks'])
+        forecast_window = st.selectbox("Choice of Future Forecast Period",['1 week', '2 weeks', '3 weeks', '4 weeks', '5 weeks'])
         forecast_window_int = mapper(forecast_window)
 
         # Choosing the closing data and reshaping into input shape
@@ -254,8 +253,7 @@ if __name__ == "__main__":
         # Inputting forecast window
         st.subheader(
             "Select the period (1-5 weeks) into the future for when you would like to see %s's forecast: " % stock_choice)
-        forecast_window = st.selectbox("Choice of Future Forecast Period",
-                                       ['1 week', '2 weeks', '3 weeks', '4 weeks', '5 weeks'])
+        forecast_window = st.selectbox("Choice of Future Forecast Period",['1 week', '2 weeks', '3 weeks', '4 weeks', '5 weeks'])
         forecast_window_int = mapper(forecast_window)
 
         # Choosing the closing data and reshaping into input shape

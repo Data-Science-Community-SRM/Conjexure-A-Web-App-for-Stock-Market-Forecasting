@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 
 # using JD as its not as stable
-df_g=yf.download('GOOG', start='2019-10-01', end='2023-01-01')
+df_g=yf.download('GOOG', start='2021-10-10', end='2023-10-10')
 
 
-#SCALING : 
+#SCALING :
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler(feature_range=(0,0.75))# 0.75 so it's easier for selu to reach
 # closing values - feature From Dataset
@@ -108,7 +108,7 @@ def visualplotloss(dataset):
 
 visualplotloss(testbatches)
 
-#For Evaluating our model : 
+#For Evaluating our model :
 model.evaluate(testbatches)
 
 

@@ -27,21 +27,3 @@ SOFTWARE.
 **Description**:
 
 Conjexure is a machine learning web app for forecasting stock prices of certain companies into the future. It leverages machine learning techniques, particularly recurrent neural networks (e.g., Long Short-Term Memory or LSTM), to make stock price predictions based on historical data. The application primarily focuses on predicting stock prices for a user-specified future window of 1 to 5 weeks.
-
-**Getting Started**:
-
-To explore Conjexure, visit our web app at [https://conjexure.herokuapp.com](https://conjexure.herokuapp.com).
-
-**Running on a Local Machine**:
-
-To run Conjexure on your local machine, ensure you have the following dependencies installed:
-
-- Pandas_datareader
-- Pandas
-- NumPy
-- Matplotlib.pyplot
-
-You can install these dependencies using the following command:
-
-```bash
-pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib

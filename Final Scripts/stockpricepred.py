@@ -8,13 +8,13 @@ import tensorflow.keras.backend
 import pandas_datareader as web
 from sklearn.preprocessing import MinMaxScaler
 import yfinance as yf
+import subprocess
 
 # Set page configuration as the first Streamlit command
 st.set_page_config(
     page_title="Conjexure | HOME",
     page_icon="📈",
 )
-
 
 # cover image used and streamlit function call to display image
 image_path = ('image.jpeg')
@@ -295,3 +295,24 @@ if __name__ == "__main__":
     st.subheader("Future forecast for %s for a period of %s after 20th July, 2023:" % (stock_choice, forecast_window))
 
     plot_graph(forecast, forecast_window_int, a)
+st.header("Current Blogs!")
+st.markdown("""
+<style>
+    .st-ef {
+        display: flex;
+        justify-content: center;
+        margin-top: 160px;
+    }
+</style>
+""", unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+
+with col1:
+    if st.button("GOOGLE BLOG"):
+        # Code to execute when the button is clicked
+        subprocess.run(["streamlit", "run", "blog_google.py"], check=True)
+
+with col2:
+    if st.button("APPLE BLOG"):
+        # Code to execute when the button is clicked
+        subprocess.run(["streamlit", "run", "blog_apple.py"], check=True)

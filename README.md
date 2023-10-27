@@ -3,7 +3,7 @@
 	<img src="https://github.com/Data-Science-Community-SRM/template/blob/master/Header.png?raw=true" width=80%/>
 </a>
 	<h2 align="center">  Conjexure - Stock Market Forecasting  </h2>
-	<h4 align="center">  Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Conjexure utilizes the stock prices for Alphabet Inc. (GOOGL) and Apple Inc. (AAPL) for training. This is primarily because the closing stock price graph for these companies over time is quite smooth overall and avoids any sudden ups or downs and follows a healthy upwards trend. <h4>
+	<h4 align="center">  Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Conjexure utilizes the stock prices for Alphabet Inc. (GOOG) and Apple Inc. (AAPL) for training. This is primarily because the closing stock price graph for these companies over time is quite smooth overall and avoids any sudden ups or downs and follows a healthy upwards trend. <h4>
 </p>
 
 ---
@@ -21,7 +21,7 @@
 ![Web_app](Images/web_app3.png)<br/>
 
 ## Functionalities
-- [x] Forecasts Stock Prices of Alphabet Inc. (GOOGL)
+- [x] Forecasts Stock Prices of Alphabet Inc. (GOOG)
 - [x] Forecasts Stock Prices of Apple Inc. (APPL)
 - [x] The forecast time window can be set by the user.
 
@@ -29,14 +29,14 @@
 
 ## Instructions to run
 
-* To install Streamlit, use the given pip command.
+* To install the required dependencies and modules, please execute the provided pip command.
 ```bash
-pip install streamlit
+pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib
 ```
 
-* Download the zip file from our repository and unzip into the desired directory.
+* Clone this repository either through GitHub Desktop or your command line interface, based on your personal preference.
 
-Running Streamlit scripts is incredibly easy. All you need to do is enter the following line in your terminal.
+Executing Streamlit scripts is remarkably straightforward. Simply navigate to your cloned directory and input the following command into your terminal.
 
 ```bash
 streamlit run stockpricepred.py

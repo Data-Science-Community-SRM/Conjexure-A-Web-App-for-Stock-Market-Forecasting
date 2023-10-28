@@ -32,7 +32,6 @@ path_aapl = ('data_aapl.csv')
 
 
 # function to load separate models on the basis of user choice
-
 def load_model(forecast_window):
     if forecast_window == '1 week':
         model = keras.models.load_model('Experiments NB/Model1_pred_7days.h5')
@@ -198,7 +197,7 @@ if __name__ == "__main__":
 
     if stock_choice == 'Alphabet (GOOG)':
         # Reading the data
-        df_test = yf.download('GOOGL', start='2021-07-01', end='2023-07-01')
+        df_test = yf.download('GOOGL', start='2021-07-01', end='2023-10-27')
 
         # Displaying historical data for Alphabet
         st.subheader("Graph of Alphabet Inc.'s Historical Stock Prices")
@@ -247,7 +246,7 @@ if __name__ == "__main__":
     elif stock_choice == 'Apple (AAPL)':
 
         # Reading the data
-        df_test = yf.download('AAPL', start='2021-07-01', end='2023-07-01')
+        df_test = yf.download('AAPL', start='2021-07-01', end='2023-10-27')
 
         # Displaying historical data for Alphabet
         st.subheader("Graph of Apple Inc.'s Historical Stock Prices")

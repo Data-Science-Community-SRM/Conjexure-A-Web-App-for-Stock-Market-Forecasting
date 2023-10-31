@@ -5,12 +5,13 @@ import pandas_datareader as web
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import yfinance as yf
 
 # using JD as its not as stable
-df_g=web.DataReader('GOOGL',data_source='yahoo',start='04-01-2003',end='07-15-2020')
+df_g=yf.download('GOOG', start='2021-10-10', end='2023-10-10')
 
 
-#SCALING : 
+#SCALING :
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler(feature_range=(0,0.75))# 0.75 so it's easier for selu to reach
 # closing values - feature From Dataset
@@ -107,7 +108,7 @@ def visualplotloss(dataset):
 
 visualplotloss(testbatches)
 
-#For Evaluating our model : 
+#For Evaluating our model :
 model.evaluate(testbatches)
 
 

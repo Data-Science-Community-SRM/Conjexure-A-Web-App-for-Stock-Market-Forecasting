@@ -1,10 +1,9 @@
-
 # Conjexure
 
 Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Stock prediction using machine learning is one of the ho topic. In stock prediction model we basically train a model using reccurent neural networks such as an Long Short Term Memory Model. We use RNNs as they were designed to work with sequence prediction problems. Sequence prediction problems come in many forms and are best described by the types of inputs and outputs supported. LSTM is a type of RNN which is good at handling long term dependecies which is benifitable to us in predicting stock prices based on last 30 or 60 days for further 7-14 days.
 
 ## Description
-Conjexure utilizes the stock prices for Alphabet Inc. (GOOGL) and Apple Inc (AAPL) for training. The reason behind this is as there closing stock price graph over the time period is quite smooth if seen overall and avoids any sudden jumps or falls and follows a upward trend. We can forecast into a user-specified future window of 1-5 weeks. We leave this upto user to select the period of time he/she wants to predict the stock values for. It also displays the raw data for the user to inspect. For the stock price, the closing price of a stock on any given day is chosen.
+Conjexure utilizes the stock prices for Alphabet Inc. (GOOG) and Apple Inc (AAPL) for training. The reason behind this is as there closing stock price graph over the time period is quite smooth if seen overall and avoids any sudden jumps or falls and follows a upward trend. We can forecast into a user-specified future window of 1-5 weeks. We leave this upto user to select the period of time he/she wants to predict the stock values for. It also displays the raw data for the user to inspect. For the stock price, the closing price of a stock on any given day is chosen.
 
 The technical stack we have used is as follows: <br/>
 - Tensorflow(Keras)    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        Building Model<br/>
@@ -15,10 +14,10 @@ The technical stack we have used is as follows: <br/>
 For deployment of Conjexure as an interactive web app, the [Streamlit](https://www.streamlit.io) framework was chosen for its robustness and ease of scripting.
 You may go through the documentation for Streamlit [here.](https://docs.streamlit.io/en/stable/)
 
-Let's visualize the stock prices value for Alphabet Inc. (GOOGL)
+Let's visualize the stock prices value for Alphabet Inc. (GOOG)
 ![stock_high_prices](Images/stock_graph.png)
 
-As you can see from the above graph that it follows a upward trend overall. These are the stock values of Alphabet Inc. from 1st of April 2003 to 15th July 2020.
+As you can see from the above graph that it follows a upward trend overall. These are the stock values of Alphabet Inc. from 1st of April 2003 to 15th July 2023.
 ## Getting Started
 
 To play around with Conjexure yourself, head on to our web app at https://conjexure.herokuapp.com.
@@ -33,14 +32,14 @@ To run Conjexure on your local machine, first ensure that the following relevant
 3. [NumPy](numpy.org)
 4. [Matplotlib.pyplot](https://matplotlib.org/api/pyplot_api.html)
 
-To install Streamlit, use the given pip command.
+* To install the required dependencies and modules, please execute the provided pip command.
 ```bash
-pip install streamlit
+pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib pandas_datareader
 ```
-### Running 
-Download the zip file from our repository and unzip into the desired directory.
 
-Running Streamlit scripts is amazingly easy. All you need to do is enter the following line in your terminal.
+* Clone this repository either through GitHub Desktop or your command line interface, based on your personal preference.
+
+Executing Streamlit scripts is remarkably straightforward. Simply navigate to your cloned directory and input the following command into your terminal.
 
 ```bash
 streamlit run stockpricepred.py
@@ -114,5 +113,6 @@ Below is the forecast of the stock values for 21st July 2020 to 27th July 2020 b
 - Aditya Shukla
 - Sheel Patel
 - Ankita Kokkera
+- Aditya Verma
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

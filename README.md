@@ -3,19 +3,24 @@
 	<img src="https://github.com/Data-Science-Community-SRM/template/blob/master/Header.png?raw=true" width=80%/>
 </a>
 	<h2 align="center">  Conjexure - Stock Market Forecasting  </h2>
-	<h4 align="center">  Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Conjexure utilizes the stock prices for Alphabet Inc. (GOOGL) and Apple Inc. (AAPL) for training. This is primarily because the closing stock price graph for these companies over time is quite smooth overall and avoids any sudden ups or downs and follows a healthy upwards trend. <h4>
+	<h4 align="center">  Conjexure is a machine learning web app for forecasting the stock prices of certain companies into the future. Conjexure utilizes the stock prices for Alphabet Inc. (GOOG) and Apple Inc. (AAPL) for training. This is primarily because the closing stock price graph for these companies over time is quite smooth overall and avoids any sudden ups or downs and follows a healthy upwards trend. <h4>
 </p>
 
 ---
 [![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](Documentation.md) 
-  [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](Images/web_app.png)
+[![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](Images/web_app.png)
+![Forks](https://img.shields.io/github/forks/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
+![Issues](https://img.shields.io/github/issues/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
+![PR](https://img.shields.io/github/issues-pr/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![Views](https://views.whatilearened.today/views/github/Data-Science-Community-SRM/Conjexure-A-Web-App-for-Stock-Market-Forecasting.svg)
 
 ## Preview
-![Web_app](Images/web_app2.png)<br/>
+![Web_app](Images/web_app2.png)<br/><br/><br/>
 ![Web_app](Images/web_app3.png)<br/>
 
 ## Functionalities
-- [x] Forecasts Stock Prices of Alphabet Inc. (GOOGL)
+- [x] Forecasts Stock Prices of Alphabet Inc. (GOOG)
 - [x] Forecasts Stock Prices of Apple Inc. (APPL)
 - [x] The forecast time window can be set by the user.
 
@@ -23,14 +28,14 @@
 
 ## Instructions to run
 
-* To install Streamlit, use the given pip command.
+* To install the required dependencies and modules, please execute the provided pip command.
 ```bash
-pip install streamlit
+pip install streamlit yfinance numpy pandas tensorflow keras scikit-learn matplotlib pandas_datareader
 ```
 
-* Download the zip file from our repository and unzip into the desired directory.
+* Clone this repository either through GitHub Desktop or your command line interface, based on your personal preference.
 
-Running Streamlit scripts is incredibly easy. All you need to do is enter the following line in your terminal.
+Executing Streamlit scripts is remarkably straightforward. Simply navigate to your cloned directory and input the following command into your terminal.
 
 ```bash
 streamlit run stockpricepred.py
@@ -163,8 +168,20 @@ Sheel Patel
 </p>
 </td>
 
+<td widht:25%>
 
+ΛDIƬYΛ VΣЯMΛ
 
+<p align="center">
+<img src = "https://raw.githubusercontent.com/ADITYAVOFFICIAL/ADITYAVOFFICIAL/main/pics/adityav.png"  height="120" alt="Aditya Verma">
+</p>
+<p align="center">
+<a href = "https://github.com/ADITYAVOFFICIAL"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://www.linkedin.com/in/aditya-verma-real/">
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+</a>
+</p>
+</td>
 
 </tr>
   </table>
